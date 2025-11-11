@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>My Portfolio | [Your Name]</title>
   <style>
     :root {
@@ -53,57 +53,44 @@
       100% { transform: translateY(0) translateX(0); opacity: 0.7; }
     }
 
-    /* Header */
-    header {
-      background: var(--primary);
-      color: white;
-      padding: 1rem 2rem;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      position: sticky;
-      top: 0;
-      z-index: 20;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-    }
-
-    header h1 {
-      font-size: 1.4rem;
-    }
-
-    /* Hamburger Menu Button */
+    /* Left fixed hamburger button */
     .menu-btn {
-      background: none;
-      border: none;
-      cursor: pointer;
+      position: fixed;
+      top: 2rem;
+      left: 1rem;
+      width: 30px;
+      height: 25px;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
-      width: 26px;
-      height: 20px;
+      z-index: 100;
+      cursor: pointer;
     }
 
     .menu-btn span {
       display: block;
       height: 3px;
-      background: white;
+      width: 100%;
+      background: var(--primary);
       border-radius: 2px;
-      transition: all 0.3s ease;
+      transition: all 0.3s;
     }
 
-    /* Sidebar */
+    /* Sidebar menu */
     .sidebar {
       position: fixed;
       top: 0;
-      left: -250px;
+      left: -250px; /* hidden by default */
       width: 250px;
       height: 100%;
       background: var(--primary);
       color: white;
       padding-top: 5rem;
-      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
       transition: left 0.4s ease;
-      z-index: 15;
+      z-index: 99;
     }
 
     .sidebar.active {
@@ -111,33 +98,15 @@
     }
 
     .sidebar a {
-      display: block;
       color: white;
       text-decoration: none;
       margin: 1rem 0;
-      font-size: 1.1rem;
+      font-size: 1.2rem;
       transition: color 0.3s;
     }
 
     .sidebar a:hover {
       color: var(--accent);
-    }
-
-    /* Dark mode toggle button */
-    .toggle-btn {
-      background: white;
-      color: var(--primary);
-      border: none;
-      border-radius: 50%;
-      width: 36px;
-      height: 36px;
-      font-size: 1rem;
-      cursor: pointer;
-      transition: transform 0.3s;
-    }
-
-    .toggle-btn:hover {
-      transform: rotate(20deg);
     }
 
     /* Sections */
@@ -149,7 +118,7 @@
       transform: translateY(40px);
       transition: all 0.8s ease;
       position: relative;
-      z-index: 2;
+      z-index: 1;
     }
 
     section.visible {
@@ -159,7 +128,7 @@
 
     #home {
       text-align: center;
-      padding-top: 6rem;
+      padding-top: 3rem;
     }
 
     #home h2 {
@@ -217,12 +186,6 @@
       margin-top: 3rem;
       font-size: 0.9rem;
     }
-
-    @media (max-width: 600px) {
-      .toggle-btn {
-        margin-left: 1rem;
-      }
-    }
   </style>
 </head>
 <body>
@@ -232,19 +195,14 @@
   <div class="bg-circle" style="width: 200px; height: 200px; top: 80%; left: 20%;"></div>
   <div class="bg-circle" style="width: 150px; height: 150px; top: 10%; left: 80%;"></div>
 
-  <header>
-    <h1>My Portfolio</h1>
-    <div style="display: flex; align-items: center; gap: 1rem;">
-      <button class="toggle-btn" id="modeToggle">☀️</button>
-      <button class="menu-btn" id="menuBtn">
-        <span></span>
-        <span></span>
-        <span></span>
-      </button>
-    </div>
-  </header>
+  <!-- Hamburger Button -->
+  <div class="menu-btn" id="menuBtn">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
 
-  <!-- Sidebar Menu (slides from left) -->
+  <!-- Sidebar -->
   <div class="sidebar" id="sidebar">
     <a href="#home">Home</a>
     <a href="#about">About</a>
@@ -254,16 +212,13 @@
 
   <section id="home" class="visible">
     <h2>Hello, I'm [Your Name]</h2>
-    <p>A passionate web developer who creates calm, functional, and elegant websites.</p>
+    <p>A calm, elegant web developer creating functional websites.</p>
     <a href="#projects" class="btn">View My Work</a>
   </section>
 
   <section id="about">
     <h2>About Me</h2>
-    <p>
-      I’m a web developer who focuses on crafting simple and user-friendly designs.
-      My mission is to create websites that feel calm, clean, and enjoyable to use.
-    </p>
+    <p>I craft simple and user-friendly web designs that feel calm and professional.</p>
   </section>
 
   <section id="projects">
@@ -271,18 +226,18 @@
     <div class="projects">
       <div class="project-card">
         <h3>Project One</h3>
-        <p>A sample project built with HTML, CSS, and JavaScript.</p>
+        <p>HTML, CSS, JavaScript project example.</p>
       </div>
       <div class="project-card">
         <h3>Project Two</h3>
-        <p>Another fun project — maybe a portfolio, quiz app, or landing page.</p>
+        <p>Another project demo or portfolio item.</p>
       </div>
     </div>
   </section>
 
   <section id="contact">
     <h2>Contact</h2>
-    <p>You can reach me at: <strong>your.email@example.com</strong></p>
+    <p>Email me at <strong>your.email@example.com</strong></p>
   </section>
 
   <footer>
@@ -294,7 +249,7 @@
     const sections = document.querySelectorAll("section");
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
-        if (entry.isIntersecting) entry.target.classList.add("visible");
+        if(entry.isIntersecting) entry.target.classList.add("visible");
       });
     }, { threshold: 0.2 });
     sections.forEach(section => observer.observe(section));
@@ -305,29 +260,11 @@
 
     menuBtn.addEventListener("click", () => {
       sidebar.classList.toggle("active");
-      menuBtn.classList.toggle("open");
     });
 
-    // Close sidebar when clicking a link
+    // Close sidebar on link click
     document.querySelectorAll(".sidebar a").forEach(link => {
       link.addEventListener("click", () => sidebar.classList.remove("active"));
-    });
-
-    // Dark mode toggle
-    const toggleBtn = document.getElementById("modeToggle");
-    const body = document.body;
-    const savedMode = localStorage.getItem("theme");
-
-    if (savedMode === "dark") {
-      body.classList.add("dark");
-      toggleBtn.textContent = "🌙";
-    }
-
-    toggleBtn.addEventListener("click", () => {
-      body.classList.toggle("dark");
-      const isDark = body.classList.contains("dark");
-      toggleBtn.textContent = isDark ? "🌙" : "☀️";
-      localStorage.setItem("theme", isDark ? "dark" : "light");
     });
   </script>
 </body>
