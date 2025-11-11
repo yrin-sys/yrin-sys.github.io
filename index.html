@@ -3,13 +3,22 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>My Portfolio</title>
+  <title>My Portfolio | [Your Name]</title>
   <style>
     :root {
-      --primary: #7db7dc;   /* calm blue */
-      --accent: #a3cde3;    /* light blue highlight */
-      --background: linear-gradient(180deg, #f3f8fb 0%, #d8ecf7 100%);
-      --text: #1b2a41;      /* dark blue-gray */
+      --primary: #7db7dc;
+      --accent: #a3cde3;
+      --background: #f3f8fb;
+      --text: #1b2a41;
+      --card: #ffffff;
+    }
+
+    body.dark {
+      --primary: #416b8d;
+      --accent: #5c8cb1;
+      --background: #0f172a;
+      --text: #e2e8f0;
+      --card: #1e293b;
     }
 
     * {
@@ -26,24 +35,25 @@
       line-height: 1.6;
       overflow-x: hidden;
       position: relative;
-      min-height: 100vh;
+      transition: background 0.5s, color 0.5s;
     }
 
-    /* Floating background circles */
+    /* Background circles */
     .bg-circle {
       position: absolute;
       border-radius: 50%;
-      background: rgba(125, 183, 220, 0.25);
-      animation: float 15s ease-in-out infinite;
+      background: rgba(125, 183, 220, 0.15);
+      animation: float 20s ease-in-out infinite;
       z-index: 0;
     }
 
     @keyframes float {
-      0% { transform: translateY(0) translateX(0); opacity: 0.6; }
-      50% { transform: translateY(-40px) translateX(20px); opacity: 0.9; }
-      100% { transform: translateY(0) translateX(0); opacity: 0.6; }
+      0% { transform: translateY(0) translateX(0); opacity: 0.7; }
+      50% { transform: translateY(-40px) translateX(30px); opacity: 1; }
+      100% { transform: translateY(0) translateX(0); opacity: 0.7; }
     }
 
+    /* Header */
     header {
       background: var(--primary);
       color: white;
@@ -64,8 +74,7 @@
     }
 
     header h1 {
-      font-size: 1.5rem;
-      z-index: 2;
+      font-size: 1.4rem;
     }
 
     nav a {
@@ -74,7 +83,6 @@
       margin: 0 1rem;
       font-weight: 500;
       position: relative;
-      z-index: 2;
     }
 
     nav a::after {
@@ -90,6 +98,22 @@
 
     nav a:hover::after {
       width: 100%;
+    }
+
+    .toggle-btn {
+      background: white;
+      color: var(--primary);
+      border: none;
+      border-radius: 50%;
+      width: 36px;
+      height: 36px;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: transform 0.3s;
+    }
+
+    .toggle-btn:hover {
+      transform: rotate(20deg);
     }
 
     section {
@@ -114,15 +138,15 @@
     }
 
     #home h2 {
-      font-size: 2rem;
+      font-size: 2.2rem;
       margin-bottom: 1rem;
       animation: fadeIn 1s ease forwards;
     }
 
     #home p {
       font-size: 1.1rem;
-      color: #333;
-      animation: fadeIn 1.5s ease forwards;
+      color: var(--text);
+      animation: fadeIn 1.4s ease forwards;
     }
 
     @keyframes fadeIn {
@@ -140,6 +164,7 @@
       text-decoration: none;
       transition: transform 0.3s ease, background 0.3s ease;
       animation: fadeIn 2s ease forwards;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
     }
 
     .btn:hover {
@@ -155,7 +180,7 @@
     }
 
     .project-card {
-      background: white;
+      background: var(--card);
       padding: 1rem;
       border-radius: 10px;
       box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
@@ -164,7 +189,7 @@
 
     .project-card:hover {
       transform: translateY(-5px);
-      box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
     }
 
     footer {
@@ -174,23 +199,21 @@
       padding: 1rem;
       margin-top: 3rem;
       font-size: 0.9rem;
-      z-index: 2;
-      position: relative;
     }
 
     @media (max-width: 600px) {
       header {
         flex-direction: column;
       }
-
       nav a {
         margin: 0.5rem;
       }
+      .bg-circle { display: none; }
     }
   </style>
 </head>
 <body>
-  <!-- Floating background shapes -->
+  <!-- Floating background -->
   <div class="bg-circle" style="width: 180px; height: 180px; top: 20%; left: 10%; animation-delay: 0s;"></div>
   <div class="bg-circle" style="width: 120px; height: 120px; top: 60%; left: 70%; animation-delay: 3s;"></div>
   <div class="bg-circle" style="width: 200px; height: 200px; top: 80%; left: 20%; animation-delay: 6s;"></div>
@@ -204,19 +227,20 @@
       <a href="#projects">Projects</a>
       <a href="#contact">Contact</a>
     </nav>
+    <button class="toggle-btn" id="modeToggle">☀️</button>
   </header>
 
   <section id="home" class="visible">
     <h2>Hello, I'm [Your Name]</h2>
-    <p>A passionate developer who loves building beautiful, functional websites.</p>
+    <p>A passionate web developer who creates calm, functional, and elegant websites.</p>
     <a href="#projects" class="btn">View My Work</a>
   </section>
 
   <section id="about">
     <h2>About Me</h2>
     <p>
-      I’m a web developer who enjoys crafting simple and calming designs.
-      I focus on clean layouts, smooth interactions, and intuitive user experiences.
+      I’m a web developer who focuses on crafting simple and user-friendly designs.
+      My mission is to create websites that feel calm, clean, and enjoyable to use.
     </p>
   </section>
 
@@ -225,11 +249,11 @@
     <div class="projects">
       <div class="project-card">
         <h3>Project One</h3>
-        <p>A short description of your project. Built using HTML, CSS, and JavaScript.</p>
+        <p>A sample project built with HTML, CSS, and JavaScript.</p>
       </div>
       <div class="project-card">
         <h3>Project Two</h3>
-        <p>A description for another project. Maybe include a GitHub or demo link.</p>
+        <p>Another fun project — maybe a portfolio, quiz app, or landing page.</p>
       </div>
     </div>
   </section>
@@ -240,20 +264,35 @@
   </section>
 
   <footer>
-    <p>© 2025 Your Name | Built with 💙</p>
+    <p>© 2025 [Your Name] | Built with 💙</p>
   </footer>
 
   <script>
-    // fade-in on scroll
+    // Fade-in sections
     const sections = document.querySelectorAll("section");
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add("visible");
-        }
+        if (entry.isIntersecting) entry.target.classList.add("visible");
       });
     }, { threshold: 0.2 });
     sections.forEach(section => observer.observe(section));
+
+    // Dark mode toggle
+    const toggleBtn = document.getElementById("modeToggle");
+    const body = document.body;
+    const savedMode = localStorage.getItem("theme");
+
+    if (savedMode === "dark") {
+      body.classList.add("dark");
+      toggleBtn.textContent = "🌙";
+    }
+
+    toggleBtn.addEventListener("click", () => {
+      body.classList.toggle("dark");
+      const isDark = body.classList.contains("dark");
+      toggleBtn.textContent = isDark ? "🌙" : "☀️";
+      localStorage.setItem("theme", isDark ? "dark" : "light");
+    });
   </script>
 </body>
 </html>
